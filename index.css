@@ -1,0 +1,85 @@
+#root {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+section {
+  height: 100vh;
+  padding: 5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section.main{
+  background: linear-gradient(45deg, #4158d0, #c850c0);
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+section.main > *{
+  margin: 1rem 0;
+}
+
+section.main > h1{
+  font-size: 4em;
+  text-transform: uppercase;
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+section.main > h2{
+  font-size: 2em;
+  font-weight: 100;
+}
+section.main > h2 strong{
+  font-size: 1.1em;
+  font-weight: 700;
+}
+
+.orderTable{
+  /* width: 100%; */
+  border-radius: 2em;
+  overflow: hidden;
+  background: linear-gradient(45deg, #4158d0, #c850c0);
+  color: #fff;
+}
+
+.countdown {
+  color: #fff;
+  text-transform: uppercase;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.countdown span {
+  padding: 0 14px;
+  font-size: 1em;
+  font-weight: 600;
+  text-align: center;
+}
+
+#cd_d{
+  letter-spacing: 0.6em;
+}
+
+#cd_h{
+  letter-spacing: 0.4em;
+}
+
+#cd_m{
+  letter-spacing: 0.2em;
+}
+#cd_s{
+  letter-spacing: 0.2em;
+}
+
+.countdown span div {
+  font-size: 4em; 
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+}
+
+
