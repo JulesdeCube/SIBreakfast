@@ -82,4 +82,23 @@ section.main > h2 strong{
   letter-spacing: 0;
 }
 
+#down{
+  font-family: 'open sans';
+  display: none;
+  position: absolute;
+  bottom:1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 3em;
+  color: #fff;
+}
 
+
+@media(max-width: 1400px) {
+  #root{
+    grid-template-columns: 1fr;
+  }
+  #down{
+    display: block;
+  }
+}

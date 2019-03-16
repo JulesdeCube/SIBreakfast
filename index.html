@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>SI breakfast</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 
@@ -17,9 +18,15 @@
   <script src="index.js"></script>
 </head>
 <body>
+  <div id="down">
+      <i class="fas fa-chevron-down"></i>
+  </div>
+  <div id="hover">
+
+  </div>
   <div id="root">
     <section class="main">
-      <h1>🥞 <span>Next breakfast</span>  🎂</h1>
+      <h1><span class="icon">🥞</span> <span>Next breakfast</span> <span class="icon">🎂</span></h1>
       <div class="countdown">
         <span id="cd_d"><div id="cd_d_var" class="value">06</div>Days</span>
         <span id="cd_h"><div id="cd_h_var" class="value">05</div>Hours</span>
@@ -29,7 +36,7 @@
       <h2>cooking by <strong id="next_group">🌞 solar panel</strong> group !</h2>
 
     </section>
-    <section class="table">
+    <section class="table" id="table">
       <div class="orderTable">
           <table>
               <thead>

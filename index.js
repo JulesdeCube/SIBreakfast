@@ -4,6 +4,12 @@ window.onload = (Envent) => {
   m = document.getElementById('cd_m_var');
   s = document.getElementById('cd_s_var');
 
+  document.getElementById('down').onclick = () => {
+    document.getElementById("table").scrollIntoView({
+      behavior:'smooth',
+      block:'start'
+    }); 
+  }
 
   const canvas = document.createElement('canvas')
 canvas.height = 64
@@ -33,19 +39,34 @@ ctx.font = '64px serif'
     '🍼'
   ];
 
+/*   iconbalise = document.querySelectorAll('.icon'); */
+  
+
 iconcouldown = setInterval(() => {
   curent = Math.round(Math.random()*(icon.length - 1));
   
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.rect(0,0, 64,64);
   ctx.fillText(icon[curent], 0, 64)
-
+  
   const favicon = document.querySelector('link[rel=icon]')
   favicon.href = canvas.toDataURL()
   
-}, 500)
+}, 666)
 
 couldown = setInterval(() => {
+
+
+
+
+/*   iconbalise.forEach(balise => {
+    curent = Math.round(Math.random()*(icon.length - 1));
+    balise.innerText = icon[curent]
+  }); */
+
+
+
+
   var date = new Date();
   remaingTime = (6 - date.getDay()) * 86400 + (10 - date.getHours()) * 3600 + (0 - date.getMinutes())* 60 + ( 0 - date.getSeconds());
   if(remaingTime < 0) {
