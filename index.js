@@ -38,9 +38,31 @@ ctx.font = '64px serif'
     '🥛',
     '🍼'
   ];
-
+  var groups = [
+    '🏓 pong robot',
+    '🌞 solar panel',
+    '🚗 parking lot bar',
+    '🧰 3D print',
+    '🏂 over board'
+  ]
 /*   iconbalise = document.querySelectorAll('.icon'); */
+
+  list = ''
+
+
+  Date.prototype.getWeekNumber = function(){
+    var d = new Date(Date.UTC(this.getFullYear(), this.getMonth(), this.getDate()));
+    var dayNum = d.getUTCDay() || 7;
+    d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+    var yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
+    return Math.ceil((((d - yearStart) / 86400000) + 1)/7)
+  };
+
+  console.log((new Date()).getWeekNumber());
   
+  document.getElementById('groupsList').innerHTML = list;
+
+
 
 iconcouldown = setInterval(() => {
   curent = Math.round(Math.random()*(icon.length - 1));
