@@ -78,7 +78,7 @@ setInterval(() => {
   
   function generate() {
     let currentDate = new Date();
-    let nextDate = new Date(2019, 2, 16, 11, 55); 
+    let nextDate = new Date(2019, 2, 10, 19, 41); 
     let genratedDate = [];
     let week = 0;
     for (let date = 0; date < groups.length; date++) {
@@ -106,7 +106,7 @@ setInterval(() => {
     let htmlCode = '';
     for (let group = 0; group < generateDate.length; group++) {
       
-      htmlCode += '<tr><td>' + (group + 1) + '</td><td>' + completZero(generateDate[group].date.getMonth()) + '/' + completZero(generateDate[group].date.getDate()) + '</td><td>' + groups[generateDate[group].group] + '</td></tr>'
+      htmlCode += '<tr><td>' + (group + 1) + '</td><td>' + completZero(generateDate[group].date.getMonth() + 1) + '/' + completZero(generateDate[group].date.getDate()) + '</td><td>' + groups[generateDate[group].group] + '</td></tr>'
     }
     table.innerHTML = htmlCode;
   }
