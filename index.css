@@ -1,7 +1,7 @@
 #root {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  display: none;
+  ;
 }
 section {
   height: 100vh;
@@ -104,6 +104,7 @@ section.main > h2 strong{
   justify-content: center;
   align-items: center;
   font-size: 4vw;
+  display: none
 }
 
 #breakfast-time .icon{
