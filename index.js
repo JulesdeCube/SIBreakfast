@@ -149,7 +149,6 @@ setInterval(() => {
     console.log('update');
     audio.loop = true
     audio.play();
-    rootB.style.diplay = true;
     setTimeout(() => {
       audio.pause()
       breakfastTime.style.display = 'none';
@@ -157,12 +156,12 @@ setInterval(() => {
     },1000*60*10
     )
     
-  }, getRemaingTime().time + 200);
+  }, getRemaingTime().time);
   
   setTimeout( () => {
     setInterval(() => {
       updateTimer()
     }, 1000)
-  },(new Date).getMilliseconds());
+  },1000 - (new Date).getMilliseconds());
 }
 
