@@ -3,68 +3,57 @@ window.onload = (Envent) => {
   h = document.getElementById('cd_h_var');
   m = document.getElementById('cd_m_var');
   s = document.getElementById('cd_s_var');
-
+  
+  nextGroupB = document.getElementById('next_group');
+  table = document.getElementById('groupsList');
+  
   document.getElementById('down').onclick = () => {
     document.getElementById("table").scrollIntoView({
       behavior:'smooth',
       block:'start'
     }); 
   }
-
+  
+  let groups = [
+    '🏓 pong robot',
+    '🏂 over board',
+    '🛠 3D print',
+    '🚗 parking lot bar',
+    '🌞 solar panel'
+  ];
+  
+  
+  
   const canvas = document.createElement('canvas')
 canvas.height = 64
 canvas.width = 64
 
 const ctx = canvas.getContext('2d')
 ctx.font = '64px serif'
-
-  var icon = [
-    '🍧',
-    '🍨',
-    '🍦',
-    '🥧',
-    '🍰',
-    '🎂',
-    '🍮',
-    '🍭',
-    '🍬',
-    '🍫',
-    '🍿',
-    '🍩',
-    '🍪',
-    '🌰', 
-    '🥜',
-    '🍯',
-    '🥛',
-    '🍼'
-  ];
-  var groups = [
-    '🏓 pong robot',
-    '🌞 solar panel',
-    '🚗 parking lot bar',
-    '🧰 3D print',
-    '🏂 over board'
-  ]
-/*   iconbalise = document.querySelectorAll('.icon'); */
-
-  list = ''
-
-
-  Date.prototype.getWeekNumber = function(){
-    var d = new Date(Date.UTC(this.getFullYear(), this.getMonth(), this.getDate()));
-    var dayNum = d.getUTCDay() || 7;
-    d.setUTCDate(d.getUTCDate() + 4 - dayNum);
-    var yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
-    return Math.ceil((((d - yearStart) / 86400000) + 1)/7)
-  };
-
-  console.log((new Date()).getWeekNumber());
-  
-  document.getElementById('groupsList').innerHTML = list;
+var icon = [
+  '🍧',
+  '🍨',
+  '🍦',
+  '🥧',
+  '🍰',
+  '🎂',
+  '🍮',
+  '🍭',
+  '🍬',
+  '🍫',
+  '🍿',
+  '🍩',
+  '🍪',
+  '🌰', 
+  '🥜',
+  '🍯',
+  '🥛',
+  '🍼'
+];
 
 
 
-iconcouldown = setInterval(() => {
+setInterval(() => {
   curent = Math.round(Math.random()*(icon.length - 1));
   
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -75,32 +64,90 @@ iconcouldown = setInterval(() => {
   favicon.href = canvas.toDataURL()
   
 }, 666)
-
-couldown = setInterval(() => {
-
-
-
-
-/*   iconbalise.forEach(balise => {
-    curent = Math.round(Math.random()*(icon.length - 1));
-    balise.innerText = icon[curent]
-  }); */
-
-
-
-
-  var date = new Date();
-  remaingTime = (6 - date.getDay()) * 86400 + (10 - date.getHours()) * 3600 + (0 - date.getMinutes())* 60 + ( 0 - date.getSeconds());
-  if(remaingTime < 0) {
-    remaingTime += 7 * 86400;
+  
+  
+  /* https://www.youtube.com/watch?v=8TO7FLxZRSM */
+  
+  
+  
+  
+  
+  function generate() {
+    let currentDate = new Date();
+  let nextDate = new Date(2019, 2, 16, 11, 55); 
+    let genratedDate = [];
+    let week = 0;
+    for (let date = 0; date < groups.length; date++) {
+      week++;
+      nextDate = new Date(nextDate.getTime() + 7*1000*60*60*24);
+      
+      if (nextDate.getTime() < currentDate.getTime()) {
+        date--;
+      }
+      else{
+        genratedDate.push({date:nextDate, group:week%groups.length});
+      }
+      
+    }
+    
+    return genratedDate
   }
-  d.innerText = Math.floor(remaingTime / 86400);
-  remaingTime -= Math.floor(remaingTime / 86400) *86400;
-  h.innerText = Math.floor((remaingTime / 3600 ));
-  remaingTime -= Math.floor(remaingTime / 3600) *3600;
-  m.innerText = Math.floor((remaingTime / 60 ));
-  remaingTime -= Math.floor(remaingTime / 60) * 60;
-  s.innerText = Math.floor(remaingTime);
-}, 1000)
+  
+  
+  function updateNextGroup() {
+    nextGroupB.innerText = groups[generateDate[0].group];
+  }
+  
+  function updateTable() {
+    let htmlCode = '';
+    for (let group = 0; group < generateDate.length; group++) {
+      
+      htmlCode += '<tr><td>' + (group + 1) + '</td><td>' + completZero(generateDate[group].date.getMonth()) + '/' + completZero(generateDate[group].date.getDate()) + '</td><td>' + groups[generateDate[group].group] + '</td></tr>'
+    }
+    table.innerHTML = htmlCode;
+  }
+  function getRemaingTime() {
+    let remaing = generateDate[0].date.getTime() - (new Date()).getTime();
+    return {
+      time: remaing,
+      days: Math.floor(remaing / (1000 * 60 * 60*24)),
+      hours: Math.floor(remaing / (1000 * 60 * 60))%24,
+      minutes: Math.floor(remaing / (1000 * 60))%60,
+      seconds: Math.floor(remaing / (1000))%60
+    }
+  }
+  
+  function updateTimer() {
+    let remaing = getRemaingTime();
+    
+    d.innerText = completZero(remaing.days);
+    h.innerText = completZero(remaing.hours);
+    m.innerText = completZero(remaing.minutes);
+    s.innerText = completZero(remaing.seconds);
+    
+  }
+  
+  function completZero(num) {
+    return num.toString(10).length === 1 ? '0' + num.toString(10) : num.toString(10)
+  }
+  
+  var generateDate = generate()
+  updateNextGroup()
+  updateTable()
+  updateTimer()
+  
+  setTimeout(() => {
+    generateDate = generate()
+    updateNextGroup()
+    updateTable()
+    console.log('update');
+    
+  }, getRemaingTime().time + 200);
+  
+  setTimeout( () => {
+    setInterval(() => {
+      updateTimer()
+    }, 1000)
+  },(new Date).getMilliseconds());
 }
 
