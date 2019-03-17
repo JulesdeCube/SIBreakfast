@@ -1,4 +1,9 @@
 window.onload = (Envent) => {
+
+  var audio = new Audio('Its_Breakfast_Time.mp3');
+
+  breakfastTime = document.getElementById('breakfast-time');
+  rootB = document.getElementById('root');
   d = document.getElementById('cd_d_var');
   h = document.getElementById('cd_h_var');
   m = document.getElementById('cd_m_var');
@@ -7,6 +12,8 @@ window.onload = (Envent) => {
   nextGroupB = document.getElementById('next_group');
   table = document.getElementById('groupsList');
   
+    breakfastTime.style.display = 'none';
+
   document.getElementById('down').onclick = () => {
     document.getElementById("table").scrollIntoView({
       behavior:'smooth',
@@ -66,15 +73,12 @@ setInterval(() => {
 }, 666)
   
   
-  /* https://www.youtube.com/watch?v=8TO7FLxZRSM */
-  
-  
   
   
   
   function generate() {
     let currentDate = new Date();
-  let nextDate = new Date(2019, 2, 16, 11, 55); 
+    let nextDate = new Date(2019, 2, 16, 11, 55); 
     let genratedDate = [];
     let week = 0;
     for (let date = 0; date < groups.length; date++) {
@@ -137,10 +141,21 @@ setInterval(() => {
   updateTimer()
   
   setTimeout(() => {
+    breakfastTime.style.display = '';
+    rootB.style.display = 'none';
     generateDate = generate()
     updateNextGroup()
     updateTable()
     console.log('update');
+    audio.loop = true
+    audio.play();
+    rootB.style.diplay = true;
+    setTimeout(() => {
+      audio.pause()
+      breakfastTime.style.display = 'none';
+      rootB.style.display = '';
+    },1000*60*10
+    )
     
   }, getRemaingTime().time + 200);
   
