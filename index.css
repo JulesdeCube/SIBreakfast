@@ -11,10 +11,35 @@ section {
 }
 
 section.main{
-  background: linear-gradient(45deg, #4158d0, #c850c0);
   color: white;
   display: flex;
   flex-direction: column;
+  background: linear-gradient(45deg, #41bfd0, #4167d0, #c850c0 ,#c85050);
+  background-size: 400% 100%;
+  animation: MoveBG 15s ease infinite;
+}
+@keyframes MoveBG { 
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 50% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes MoveBGl { 
+	0% {
+		background-position: 50% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 50% 50%
+	}
 }
 
 section.main > *{
@@ -41,8 +66,10 @@ section.main > h2 strong{
   font-size: 2vmin;
   border-radius: 2em;
   overflow: hidden;
-  background: linear-gradient(45deg, #4158d0, #c850c0);
   color: #fff;
+  background: linear-gradient(45deg, #41bfd0, #4158d0, #c850c0 ,#c86850);
+  background-size: 400% 200%;
+  animation: MoveBGl 15s ease infinite;
 }
 
 .countdown {
@@ -97,12 +124,26 @@ section.main > h2 strong{
   position: absolute;
   color: #fff;
   width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, #4158d0, #c850c0);
+  height: 100%; 
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 4vw;
+  background: linear-gradient(45deg, #41bfd0, #4158d0, #c850c0 ,#c86850);  
+  background-size: 200% 200%;
+  animation: MoveBGq 15s ease infinite;
+}
+
+@keyframes MoveBGq { 
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
 }
 
 #breakfast-time .icon{
