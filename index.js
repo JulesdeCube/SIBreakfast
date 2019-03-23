@@ -78,7 +78,7 @@ setInterval(() => {
   
   function generate() {
     let currentDate = new Date();
-    let nextDate = new Date(2019, 2, 16, 11, 55); 
+    let nextDate = new Date(2019, 2, 16, 9, 55); 
     let genratedDate = [];
     let week = 0;
     for (let date = 0; date < groups.length; date++) {
